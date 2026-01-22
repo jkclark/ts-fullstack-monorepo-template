@@ -1,30 +1,30 @@
-import type { User } from "@ts-monorepo/common";
-import { formatUser, isValidEmail } from "@ts-monorepo/common";
-import React, { useEffect, useState } from "react";
+import type { User } from "@ts-monorepo/common"
+import { formatUser, isValidEmail } from "@ts-monorepo/common"
+import React, { useEffect, useState } from "react"
 
 const defaultUser: User = {
   id: "1",
   name: "John Doe",
   email: "john@example.com",
-};
+}
 
 export const UserProfile: React.FC = () => {
-  const [user, setUser] = useState<User>(defaultUser);
-  const [formattedUser, setFormattedUser] = useState<string>("");
-  const [isEmailValid, setIsEmailValid] = useState<boolean>(true);
+  const [user, setUser] = useState<User>(defaultUser)
+  const [formattedUser, setFormattedUser] = useState<string>("")
+  const [isEmailValid, setIsEmailValid] = useState<boolean>(true)
 
   useEffect(() => {
-    setFormattedUser(formatUser(user));
-    setIsEmailValid(isValidEmail(user.email));
-  }, [user]);
+    setFormattedUser(formatUser(user))
+    setIsEmailValid(isValidEmail(user.email))
+  }, [user])
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newEmail = e.target.value;
+    const newEmail = e.target.value
     setUser((prev) => ({
       ...prev,
       email: newEmail,
-    }));
-  };
+    }))
+  }
 
   return (
     <div
@@ -46,7 +46,10 @@ export const UserProfile: React.FC = () => {
           <strong>Name:</strong> {user.name}
         </p>
         <div style={{ margin: "1rem 0" }}>
-          <label htmlFor="email" style={{ display: "block", marginBottom: "0.5rem" }}>
+          <label
+            htmlFor="email"
+            style={{ display: "block", marginBottom: "0.5rem" }}
+          >
             <strong>Email:</strong>
           </label>
           <input
@@ -62,7 +65,13 @@ export const UserProfile: React.FC = () => {
             }}
           />
           {!isEmailValid && (
-            <p style={{ color: "red", fontSize: "0.875rem", marginTop: "0.25rem" }}>
+            <p
+              style={{
+                color: "red",
+                fontSize: "0.875rem",
+                marginTop: "0.25rem",
+              }}
+            >
               Please enter a valid email address
             </p>
           )}
@@ -92,7 +101,7 @@ export const UserProfile: React.FC = () => {
         {isEmailValid ? "✓ Email is valid" : "✗ Invalid email format"}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default UserProfile;
+export default UserProfile
