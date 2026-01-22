@@ -27,7 +27,7 @@ export const UserProfile: React.FC = () => {
   }
 
   return (
-    <div className="bg-red-500">
+    <div className="bg-base-300 max-w-md rounded-lg p-3">
       <h2>User Profile</h2>
       <div>
         <p>
